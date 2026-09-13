@@ -1,6 +1,6 @@
 # Semeando Hábitos: uma estufa digital para rastreamento de hábitos 
 
-**Autores:** Fábio, Henry, ********., Matheus R., José L. e Henrique Molino
+**Autores:** Fábio, Henry, Miguel P., Matheus R., José L. e Henrique Molino
 
 **Curso:** Análise e Desenvolvimento de Sistemas — 3ª série do Ensino Médio (Técnico)
 
