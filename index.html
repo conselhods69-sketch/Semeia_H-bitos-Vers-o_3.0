@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Semeando Hábitos</title>
+    <meta
+      name="description"
+      content="Semeando Hábitos: rastreie seus hábitos como se fossem plantas em uma estufa."
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="app-header">
+        <div class="brand">
+          <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+            <path
+              d="M24 42 C24 30 24 22 24 12"
+              stroke="currentColor"
+              stroke-width="2.5"
+              fill="none"
+              stroke-linecap="round"
+            />
+            <path
+              d="M24 20 C15 20 9 15 8 6 C18 6 24 12 24 20 Z"
+              fill="currentColor"
+              opacity="0.9"
+            />
+            <path
+              d="M24 28 C33 28 39 23 40 14 C30 14 24 20 24 28 Z"
+              fill="currentColor"
+              opacity="0.65"
+            />
+            <ellipse
+              cx="24"
+              cy="43"
+              rx="10"
+              ry="3"
+              fill="currentColor"
+              opacity="0.25"
+            />
+          </svg>
+          <div class="brand-text">
+            <h1>Semeando Hábitos</h1>
+            <p class="brand-sub">sua estufa de rotinas</p>
+          </div>
+        </div>
+        <button
+          class="icon-btn"
+          id="notifToggle"
+          type="button"
+          aria-pressed="false"
+          title="Lembretes"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M12 3c-3.9 0-6 2.9-6 6.5v3.6L4 16.5V18h16v-1.5l-2-2.4V9.5C18 5.9 15.9 3 12 3Z"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M9.5 20.5a2.5 2.5 0 0 0 5 0"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+            />
+          </svg>
+          <span class="icon-btn-label">Lembretes</span>
+        </button>
+      </header>
+      <nav class="tabs" aria-label="Navegação principal">
+        <button class="tab is-active" data-view="greenhouse" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M3 10.5 12 4l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1Z"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <span>Estufa</span>
+        </button>
+        <button class="tab" data-view="stats" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M4 20V10M11 20V4M18 20v-7"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+            />
+          </svg>
+          <span>Estatísticas</span>
+        </button>
+        <button class="tab" data-view="achievements" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M12 3 14.6 8.4 20.5 9.3 16.3 13.4 17.3 19.3 12 16.5 6.7 19.3 7.7 13.4 3.5 9.3 9.4 8.4Z"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <span>Conquistas</span>
+        </button>
+      </nav>
+      <main class="app-main">
+        <section class="view is-active" id="view-greenhouse">
+          <details class="new-habit-card" id="newHabitDetails" open>
+            <summary>
+              <span class="new-habit-icon" aria-hidden="true">+</span
+              ><span>Plantar novo hábito</span>
+            </summary>
+            <form id="habitForm" class="habit-form" autocomplete="off">
+              <div class="field">
+                <label for="habitName">Nome do hábito</label>
+                <input
+                  type="text"
+                  id="habitName"
+                  maxlength="40"
+                  required
+                  placeholder="Ex: Beber água"
+                />
+              </div>
+              <div class="field">
+                <span class="field-label">Dias da semana</span>
+                <div
+                  class="day-picker"
+                  id="dayPicker"
+                  role="group"
+                  aria-label="Dias da semana"
+                >
+                  <button type="button" class="day-chip" data-day="0">D</button>
+                  <button type="button" class="day-chip" data-day="1">S</button>
+                  <button type="button" class="day-chip" data-day="2">T</button>
+                  <button type="button" class="day-chip" data-day="3">Q</button>
+                  <button type="button" class="day-chip" data-day="4">Q</button>
+                  <button type="button" class="day-chip" data-day="5">S</button>
+                  <button type="button" class="day-chip" data-day="6">S</button>
+                </div>
+              </div>
+              <div class="field field-time">
+                <label for="habitTime">Horário do lembrete</label>
+                <input type="time" id="habitTime" value="08:00" />
+              </div>
+              <p
+                class="field-error"
+                id="formError"
+                role="alert"
+                aria-live="polite"
+              ></p>
+              <button type="submit" class="btn btn-primary">
+                Plantar hábito
+              </button>
+            </form>
+          </details>
+          <div class="greenhouse-empty" id="greenhouseEmpty" hidden>
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+              <path
+                d="M32 56V26M20 26c0-10 6-16 12-18 6 2 12 8 12 18"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              />
+              <ellipse
+                cx="32"
+                cy="57"
+                rx="16"
+                ry="4"
+                fill="currentColor"
+                opacity=".12"
+              />
+            </svg>
+            <p>Sua estufa está vazia. Plante seu primeiro hábito acima.</p>
+          </div>
+          <div class="greenhouse-grid" id="greenhouseGrid"></div>
+        </section>
+        <section class="view" id="view-stats">
+          <div class="stat-cards" id="statCards">
+            <div class="stat-card">
+              <span class="stat-value" id="statTotalConfirms">0</span
+              ><span class="stat-label">Confirmações totais</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-value" id="statBestStreak">0</span
+              ><span class="stat-label">Melhor sequência</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-value" id="statConsistency">0%</span
+              ><span class="stat-label">Consistência (30 dias)</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-value" id="statActive">0</span
+              ><span class="stat-label">Hábitos ativos</span>
+            </div>
+          </div>
+          <div class="panel">
+            <h2>Últimas 8 semanas</h2>
+            <div class="heatmap-wrap">
+              <div class="heatmap" id="heatmap"></div>
+            </div>
+            <div class="heatmap-legend">
+              <span>menos</span>
+              <span class="legend-cell" data-level="0"></span
+              ><span class="legend-cell" data-level="1"></span>
+              <span class="legend-cell" data-level="2"></span
+              ><span class="legend-cell" data-level="3"></span>
+              <span class="legend-cell" data-level="4"></span>
+              <span>mais</span>
+            </div>
+          </div>
+          <div class="panel">
+            <h2>Ranking de hábitos</h2>
+            <ol class="ranking-list" id="rankingList"></ol>
+            <p class="empty-hint" id="rankingEmpty" hidden>
+              Plante hábitos para ver o ranking.
+            </p>
+          </div>
+        </section>
+        <section class="view" id="view-achievements">
+          <p class="view-intro">
+            Desbloqueadas quando qualquer hábito atinge a sequência necessária.
+          </p>
+          <div class="badges-grid" id="badgesGrid"></div>
+        </section>
+      </main>
+      <footer class="app-footer">
+        <p>Seus dados ficam salvos apenas neste navegador.</p>
+      </footer>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <template id="plantCardTemplate">
+      <article class="plant-card">
+        <header class="plant-card-head">
+          <h3 class="plant-name"></h3>
+          <button
+            class="plant-menu-btn"
+            type="button"
+            aria-label="Remover hábito"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M6 6 18 18M18 6 6 18"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+        </header>
+        <div class="plant-stage-name"></div>
+        <div class="pot-scene">
+          <svg class="plant-svg" viewBox="0 0 120 140" aria-hidden="true"></svg>
+        </div>
+        <div class="plant-progress" aria-hidden="true">
+          <span class="progress-dot"></span><span class="progress-dot"></span
+          ><span class="progress-dot"></span><span class="progress-dot"></span>
+          <span class="progress-dot"></span><span class="progress-dot"></span
+          ><span class="progress-dot"></span><span class="progress-dot"></span>
+        </div>
+        <div class="plant-meta">
+          <div class="meta-item">
+            <span class="meta-value streak-value"></span
+            ><span class="meta-label">sequência</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-value best-value"></span
+            ><span class="meta-label">melhor</span>
+          </div>
+        </div>
+        <p class="plant-schedule"></p>
+        <button type="button" class="btn btn-confirm">
+          <span>Confirmar hoje</span>
+        </button>
+      </article>
+    </template>
+    <script src="script.js"></script>
+  </body>
+</html>
